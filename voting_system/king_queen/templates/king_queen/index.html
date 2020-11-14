@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    
+<div class="container text-center">
+    {% if messages %}
+        {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show" {% endif %} role="alert">
+            <strong>{{ message }}</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 mt-3">
+            <div class="list-group">
+                <a href="{% url 'firstking' %}" class="list-group-item list-group-item-action list-group-item-info">First Year King</a>
+                <a href="{% url 'firstqueen' %}" class="list-group-item list-group-item-action list-group-item-info">First Year Queen</a>
+                <br><br>
+                <a href="{% url 'thewholeking' %}" class="list-group-item list-group-item-action list-group-item-info">The Whole King</a>
+                <a href="{% url 'thewholequeen' %}" class="list-group-item list-group-item-action list-group-item-info">The Whole Queen</a>
+            </div>
+        </div>
+    
+</div>
+
+</div>
+
+
+
+
+{% endblock %}

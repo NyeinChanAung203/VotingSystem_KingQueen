@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} The Whole Year {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    
+    <h1 class="text-center">The Whole Queen</h1>
+    {% if messages %}
+        {% for message in messages %}
+        <div {% if message.tags %} class="text-center alert alert-{{ message.tags }}"{% endif %} role="alert">
+            <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="card">
+                <img style="object-fit: cover;" class="card-img-top" src="{{ t_queen.img.url }}" alt="image" width="100%">
+                <div class="card-footer text-center">
+                    <form  method="POST" action="/thewhole_queen/{{ t_queen.pk }}/vote">
+                        {% csrf_token %}
+                       <input class="form-control mt-10" name="qrcode" id="code" type="text" maxlength="32" placeholder="Paste your QRcode" required/><br>
+                       <button type="submit" class="btn btn-success" id="vote">Vote</button>
+                    </form>
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

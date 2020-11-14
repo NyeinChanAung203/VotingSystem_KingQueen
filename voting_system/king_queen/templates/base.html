@@ -1,0 +1,52 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" crossorigin="anonymous">
+
+    <title>{% block title%}{% endblock %}</title>
+
+  </head>
+  <body>
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-info mb-3" style="background-color: #e3f2fd;">
+      <a class="navbar-brand" href="{% url 'index' %}">CUMDY</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link {% if section == 'home' %}active{% endif %}" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if section == 'active' %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              King&Queen
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'firstking' %}">First Year King</a>
+              <a class="dropdown-item" href="{% url 'firstqueen' %}">First Year Queen</a>
+              <a class="dropdown-item" href="{% url 'thewholeking' %}">The Whole King</a>
+              <a class="dropdown-item" href="{% url 'thewholequeen' %}">The Whole Queen</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+        {% block content %}
+        {% endblock %}
+    
+        <script src="{% static 'js/jquery.min.js' %}""  crossorigin="anonymous"></script>
+        <script src="{% static 'js/popper.min.js' %}"  crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"  crossorigin="anonymous"></script>
+    
+  </body>
+</html>
